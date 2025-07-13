@@ -34,7 +34,7 @@ class Author(TypedDict):
 class DB:
     def __init__(self, connection_string: str):
         self.client = MongoClient(connection_string)
-        self.db = self.client["crawler"]
+        self.db = self.client["alphy"]
 
     def insert_post(self, post: Post) -> None:
         collection = self.db["posts"]

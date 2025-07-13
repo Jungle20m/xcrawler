@@ -9,7 +9,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
-      MONGO_INITDB_DATABASE: crawler
+      MONGO_INITDB_DATABASE: alphy
     volumes:
       - mongo-data:/data/db
       - mongo-config:/data/configdb
