@@ -2,8 +2,7 @@ import time
 
 from src.scraper.apify import ApiFy
 from src.scraper import alphy
-from src.db import DB, Post
-from src import parser
+from src.db import DB, Post, Author
 from src.logger import get_logger
 
 logger = get_logger()
@@ -16,124 +15,53 @@ class Crawler():
     def run(self):
         # users = ["elonmusk", "realDonaldTrump"]     
         # data = self.apify.scrape_tweeter_data(users=users)
-        
         # posts = parser.dicts_to_posts(data)
         # self.db.insert_posts(posts)
 
 
-        users = [
-            "BarackObama",
-            "katyperry",
-            "justinbieber",
-            "rihanna",
-            "taylorswift13",
-            "Cristiano",
-            "ladygaga",
-            "TheEllenShow",
-            "YouTube",
-            "ArianaGrande",
-            "realDonaldTrump",
-            "jtimberlake",
-            "KimKardashian",
-            "selenagomez",
-            "Twitter",
-            "britneyspears",
-            "cnnbrk",
-            "narendramodi",
-            "shakira",
-            "jimmyfallon",
-            "BillGates",
-            "neymarjr",
-            "nytimes",
-            "MileyCyrus",
-            "JLo",
-            "KingJames",
-            "CNN",
-            "BrunoMars",
-            "Oprah",
-            "BBCBreaking",
-            "iamsrk",
-            "SrBachchan",
-            "NiallOfficial",
-            "Drake",
-            "BeingSalmanKhan",
-            "instagram",
-            "SportsCenter",
-            "KevinHart4real",
-            "wizkhalifa",
-            "espn",
-            "LilTunechi",
-            "NASA",
-            "Harry_Styles",
-            "Louis_Tomlinson",
-            "realmadrid",
-            "akshaykumar",
-            "LiamPayne",
-            "imVkohli",
-            "Pink",
-            "chrisbrown",
-            "FCBarcelona",
-            "PMOIndia",
-            "sachin_rt",
-            "onedirection",
-            "elonmusk",
-            "aliciakeys",
-            "KylieJenner",
-            "KAKA",
-            "kanyewest",
-            "EmmaWatson",
-            "NBA",
-            "ConanOBrien",
-            "KendallJenner",
-            "zaynmalik",
-            "khloekardashian",
-            "Adele",
-            "POTUS",
-            "iHrithik",
-            "ActuallyNPH",
-            "deepikapadukone",
-            "BBCWorld",
-            "HillaryClinton",
-            "pitbull",
-            "ChampionsLeague",
-            "danieltosh",
-            "priyankachopra",
-            "aamir_khan",
-            "NFL",
-            "kourtneykardash",
-            "MesutOzil1088",
-            "andresiniesta8",
-            "ShawnMendes",
-            "TheEconomist",
-            "coldplay",
-            "NatGeo",
-            "BTS_twt",
-            "Eminem",
-            "arrahman",
-            "Google",
-            "AvrilLavigne",
-            "MariahCarey",
-            "davidguetta",
-            "Reuters",
-            "premierleague",
-            "ManUtd",
-            "AnushkaSharma",
-            "blakeshelton",
-            "NICKIMINAJ",
-            "ricky_martin",
-            "MohamadAlarefe"
-        ]    
+        # users = ["elonmusk", "realDonaldTrump"]
+        # for user in users:
+        #     try:
+        #         data = alphy.scrape_tweet(user)
+        #         posts = alphy.dicts_to_posts(data)
+        #         self.db.insert_posts(posts)
+        #         time.sleep(5)                
+        #     except Exception as e:
+        #         logger.error(e)
         
-        for user in users:
+        authors = self.db.get_authors()
+        cookies = alphy.get_cookies(url="https://x.com")
+        for author in authors:
             try:
-                logger.info(f"Scraping: {user}")
-
-                data = alphy.scrape_tweet(user)
-                posts = alphy.dicts_to_posts(data)
-                self.db.insert_posts(posts)
-                time.sleep(5)
+                print(f"User: {author['name']}")                
+                resp = alphy.get_user_tweets_without_auth(author["site_id"], user_name=author["name"], cookies=cookies)
+                if resp != None:
+                    posts = alphy.dicts_to_posts(resp)
+                    self.db.insert_posts(posts)
+                    print("successfully")
                 
-                logger.info("Successful.")
+                
+                time.sleep(6)
+                    
             except Exception as e:
-                logger.error(e)
-    
+                print(e)
+        
+        
+        # cookies = alphy.get_cookies(url="https://x.com")    
+        # resp = alphy.get_user_tweets_without_auth(user_id="25073877", user_name="realDonaldTrump", cookies=cookies)
+        # if resp != None:
+        #     posts = alphy.dicts_to_posts(resp)
+        #     self.db.insert_posts(posts)
+        #     time.sleep(5)
+        
+        # with open("data/users.txt", 'r') as file:
+        #     users = [line.strip() for line in file if line.strip()]    
+        #     for user in users:
+        #         rest_id = alphy.get_user_by_screen_name(user)
+        #         if rest_id != None:
+        #             print(rest_id)
+        #             author = Author(name=user, site_id=rest_id)
+        #             self.db.insert_author(author)
+        #             time.sleep(1)
+        
+                    

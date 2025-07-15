@@ -35,11 +35,17 @@ class DB:
     def __init__(self, connection_string: str):
         self.client = MongoClient(connection_string)
         self.db = self.client["alphy"]
+        self.author_collection = self.db["authors"]
+        self.post_collection = self.db["posts"]
 
     def insert_post(self, post: Post) -> None:
-        collection = self.db["posts"]
-        collection.insert_one(post)
+        self.post_collection.insert_one(post)
 
     def insert_posts(self, posts: List[Post]) -> None:
-        collection = self.db["posts"]
-        collection.insert_many(posts)
+        self.post_collection.insert_many(posts)
+        
+    def insert_author(self, author: Author) -> None:
+        self.author_collection.insert_one(author)
+        
+    def get_authors(self) -> List[Author]:
+        return list(self.author_collection.find())
