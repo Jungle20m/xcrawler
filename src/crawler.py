@@ -1,7 +1,9 @@
 import time
+import threading
 
 from src.scraper.apify import ApiFy
 from src.scraper import alphy
+from src.scraper.alphy import AlphyExtractor
 from src.db import DB, Post, Author
 from src.logger import get_logger
 
@@ -65,3 +67,24 @@ class Crawler():
         #             time.sleep(1)
         
                     
+class APICrawler:
+    def __init__(self, num_workers: int):
+        self.num_workers = num_workers
+        
+    def _scrape(self, thread_id: int):
+        # Tạo profile cho chrome
+        extractor = AlphyExtractor()
+        # data = extractor.scrape(user_id="44196397")
+        # print(data)
+        
+        
+    def run(self):
+        threads = []
+        
+        for id in range(self.num_workers):
+            thread = threading.Thread(target=self._scrape, args=(id,), daemon=True)
+            thread.start()
+            threads.append(thread)
+        
+        for thread in threads:
+            thread.join()
