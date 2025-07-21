@@ -1,100 +1,200 @@
-justinbieber
-katyperry
-rihanna
-Cristiano
-taylorswift13
-ladygaga
-elonmusk
-TheEllenShow
-KimKardashian
-selenagomez
-jtimberlake
-BillGates
-neymarjr
-britneyspears
-ddlovato
-shakira
-jimmyfallon
-KingJames
-imVkohli
-SrBachchan
-MileyCyrus
-JLo
-akshaykumar
-BeingSalmanKhan
-Oprah
-BrunoMars
-iamsrk
-NiallOfficial
-KylieJenner
-Drake
-Harry_Styles
-sachin_rt
-KevinHart4real
-wizkhalifa
-Louis_Tomlinson
-LilTunechi
-KendallJenner
-chrisbrown
-Pink
-iHrithik
-onedirection
-zaynmalik
-kanyewest
-aliciakeys
-khloekardashian
-KAKA
-ConanOBrien
-priyankachopra
-deepikapadukone
-Adele
-ShawnMendes
-kourtneykardash
-MesutOzil1088
-ActuallyNPH
-andresiniesta8
-pitbull
-NICKIMINAJ
-danieltosh
-arrahman
-coldplay
-AnushkaSharma
-virendersehwag
-Eminem
-MariahCarey
-MichelleObama
-aliaa08
-Zendaya
-AvrilLavigne
-10Ronaldinho
-ImRo45
-Dr_alqarnee
-3gerardpique
-ricky_martin
-davidguetta
-SnoopDogg
-ImRaina
-blakeshelton
-AlejandroSanz
-AnupamPkher
-KDTrey5
-LeoDiCaprio
-MohamadAlarefe
-StephenAtHome
-KapilSharmaK9
-SergioRamos
-jamesdrodriguez
-JimCarrey
-GarethBale11
-shugairi
-agnezmo
-edsheeran
-karanjohar
-RobertDowneyJr
-FALCAO
-WayneRooney
-aplusk
-DaniloGentili
-ivetesangalo
-LuisSuarez9
-ParisHilton
+justinbieber,27260086,smarturl.it,Justin Bieber,114357427,31399
+katyperry,21447363,katyperry.com,KATY PERRY,108900656,11625
+rihanna,79293791,rihannanow.com,Rihanna,106201663,10630
+Cristiano,155659213,,Cristiano Ronaldo,99274403,3780
+taylorswift13,17919972,grmypro.co,Taylor Swift,90373941,716
+ladygaga,14230524,,The Countess,84576292,9744
+elonmusk,44196397,,Elon Musk,82898543,17487
+TheEllenShow,15846407,ellentube.com,Ellen DeGeneres,77595645,23819
+KimKardashian,25365536,AppStore.com,Kim Kardashian West,72170641,35405
+selenagomez,23375688,smarturl.it,Selena Gomez,65791273,5388
+jtimberlake,26565946,justintimberlake.com,Justin Timberlake,63231222,4348
+BillGates,50393960,gatesnotes.com,Bill Gates,58128522,3848
+neymarjr,158487331,neymaroficial.com,Neymar Jr,56508547,42181
+britneyspears,16409683,britney.lk,Britney Spears,55863848,5632
+ddlovato,21111883,demilovato.com,Demi Lovato,54260759,17793
+shakira,44409004,rov.io,Shakira,52803100,7805
+jimmyfallon,15485441,tonightshow.com,jimmy fallon,51467139,14098
+KingJames,23083404,LeBronJames.com,LeBron James,51182528,8347
+imVkohli,71201743,,Virat Kohli ,47768699,2593
+SrBachchan,145125358,srbachchan.tumblr.com,Amitabh Bachchan,47422403,68863
+MileyCyrus,268414482,,Miley Ray Cyrus,46761161,12102
+JLo,85603854,jlo.lk,Jennifer Lopez,45294203,17819
+akshaykumar,31348594,,Akshay Kumar,44469770,41232
+BeingSalmanKhan,132385468,,Salman Khan,44044158,43128
+Oprah,19397785,oprah.com,Oprah Winfrey,43257237,13546
+BrunoMars,100220864,brunomars.com,Bruno Mars,43245574,4934
+iamsrk,101311381,,Shah Rukh Khan,42481882,58278
+NiallOfficial,105119490,onedirectionmusic.com,Niall Horan,41310890,18253
+KylieJenner,236699098,,Kylie Jenner,39787724,14241
+Drake,27195114,octobersveryown.com,Drizzy,39471367,1796
+Harry_Styles,181561712,onedirectionmusic.com,Harry Styles.,37607381,5612
+sachin_rt,135421739,,sachin tendulkar,37217742,4244
+KevinHart4real,23151437,whatnowtour.com,Kevin Hart,37169187,41460
+wizkhalifa,20322929,wizkhalifa.com,Cameron,36443673,49869
+Louis_Tomlinson,84279963,,Louis Tomlinson,36036127,7609
+LilTunechi,116362700,youngmoney.com,Lil Wayne WEEZY F,34921888,2487
+KendallJenner,157140968,,Kendall Jenner,32073884,9649
+chrisbrown,119509520,chrisbrownworld.com,Chris Brown,32067941,4614
+Pink,28706024,,P!nk,31594739,8130
+iHrithik,113419517,,Hrithik Roshan,31577837,6016
+onedirection,209708391,onedirectionmusic.com,One Direction,31213574,9762
+zaynmalik,176566242,,zayn,31003671,3686
+kanyewest,169686021,KANYEWEST.COM,KANYE WEST,30796560,1910
+aliciakeys,35094637,aliciakeys.com,Alicia Keys,30086442,10732
+khloekardashian,32959253,khloewithak.com,Khloé,29945776,67130
+KAKA,60865434,,Kaka,29311125,5290
+ConanOBrien,115485051,teamcoco.com,Conan O'Brien,28563756,5124
+priyankachopra,18681139,iampriyankachopra.com,PRIYANKA ,27716583,22220
+deepikapadukone,101695592,,Deepika Padukone,27608800,665
+Adele,184910040,adele.com,Adele,27422005,356
+ShawnMendes,379408088,,Shawn Mendes,26767772,15429
+kourtneykardash,23617610,,Kourtney Kardashian,26478393,14264
+MesutOzil1088,533085085,mesutoezil.com,Mesut Özil,26179280,2273
+ActuallyNPH,90420314,,Neil Patrick Harris,25645964,3234
+andresiniesta8,90836187,andresiniesta.es,Andrés Iniesta,25303336,3238
+pitbull,31927467,youtube.com,Pitbull,25128103,8500
+NICKIMINAJ,35787166,,NICKI MINAJ,24934054,43201
+danieltosh,25521487,danieltosh.com,daniel tosh,24273425,21
+arrahman,19895282,arrahman.com,A.R.Rahman,24087431,6411
+coldplay,18863815,coldplay.com,Coldplay,23602653,9112
+AnushkaSharma,54829997,,Anushka Sharma,23016220,4702
+virendersehwag,92724677,sehwagworld.com,Virender Sehwag,22838833,12197
+Eminem,22940219,eminem.com,Marshall Mathers,22613131,1139
+MariahCarey,19248106,mariahcarey.com,Mariah Carey,21793227,10537
+MichelleObama,409486555,barackobama.com,Michelle Obama,21683757,1901
+aliaa08,183230911,,SHAANDAAR Alia,21394998,5513
+Zendaya,154280902,crowdrise.com,Zendaya,20737698,58446
+AvrilLavigne,73992972,smarturl.it,Avril Lavigne,20670200,4405
+10Ronaldinho,29479000,,Ronaldinho Gaúcho,20630756,5945
+ImRo45,121046433,,Rohit Sharma ,20423003,2561
+Dr_alqarnee,242245578,youtube.com,عائض القرني,20419616,70180
+3gerardpique,224223563,,Gerard Piqué,20379985,3130
+ricky_martin,40255499,bit.ly,Ricky Martin,20256170,7604
+davidguetta,23976386,davidguetta.com,David Guetta,20211389,6287
+SnoopDogg,3004231,YouTube.com,Snoop Dogg,20011554,42481
+ImRaina,121044171,,Suresh Raina,19961669,7013
+blakeshelton,14920785,blakeshelton.com,Blake Shelton,19857302,12879
+AlejandroSanz,43152482,alejandrosanz.com,Alejandro Sanz,19778216,30777
+AnupamPkher,76294950,actorprepares.net,Anupam Kher,19737080,41548
+KDTrey5,35936474,,Kevin Durant,19735946,24558
+LeoDiCaprio,133880286,leonardodicaprio.com,Leonardo DiCaprio,19598263,2589
+MohamadAlarefe,219255067,arefe.com,د. محمد #العريفي,19571719,23310
+StephenAtHome,16303106,,Stephen Colbert,19385363,7015
+KapilSharmaK9,1492538024,kapilsharma.org,KAPIL,19114568,11085
+SergioRamos,151123001,sergioramos.com,Sergio Ramos,19072854,4326
+jamesdrodriguez,280701704,jamesrodriguez.com.co,James Rodríguez,19043536,2901
+JimCarrey,52551600,jimcarrey.com,Jim Carrey,18971528,4690
+GarethBale11,740336334,,Gareth Bale,18829242,1661
+shugairi,175883705,i7san.net,أحمد الشقيري,18430752,2135
+agnezmo,42420346,agnezmo.com,AGNEZ MO,17892377,15713
+edsheeran,85452649,,Ed Sheeran,17643447,23504
+karanjohar,57928790,,Karan Johar,17330984,11782
+RobertDowneyJr,47786101,,Robert Downey Jr,17326439,867
+FALCAO,58531272,,Radamel Falcao,17315321,6767
+WayneRooney,285332860,waynerooney.com,Wayne Rooney,17236762,3266
+aplusk,19058681,,ashton kutcher,17165748,10641
+DaniloGentili,14213711,danilogentili.com,Danilo Gentili,17143630,84621
+ivetesangalo,14502789,ivetesangalo.com,Ivete Sangalo,17102340,45373
+LuisSuarez9,213745334,luissuarez16.com,Luis Suarez,17064962,1570
+ParisHilton,24929621,ParisHilton.com,Paris Hilton,16917112,25801
+xtina,268439864,christinaaguilera.com,Christina Aguilera,16703319,2946
+tomhanks,50374439,playtone.com,Tom Hanks,16320387,948
+TheRock,250831586,,Dwayne Johnson,16065568,26045
+theweeknd,255388236,theweeknd.co,The Weeknd,16045982,4376
+StephenCurry30,42562446,Stephencurry30.com,Stephen Curry,16029103,7735
+elissakh,278235826,elissalb.com,Elissa,15768824,62753
+Asli_Jacqueline,79708561,,Jacqueline Fernandez,15722756,7620
+RafaelNadal,344634424,rafaelnadal.com,Rafa Nadal,15703473,3140
+SHAQ,17461978,,SHAQ,15649101,10185
+radityadika,47363197,radityadika.com,raditya dika,15642125,52723
+juniorbachchan,87170183,,Abhishek Bachchan ,15603511,33358
+ChrisEvans,580097412,,Chris Evans,15548144,2034
+NancyAjram,470307418,youtu.be,Nancy Ajram,15528692,25047
+shahidkapoor,56631494,,Shaandaar Kapoor,15489591,7857
+Beyonce,31239408,beyonce.com,Beyoncé Knowles,15459969,19
+paulocoelho,5520952,paulocoelhoblog.com,Paulo Coelho,15429700,36359
+CMYLMZ,126571977,cmylmz.com,Cem Yılmaz,15406764,2191
+ajaydevgn,65659343,,Ajay Devgn,15359811,3548
+ZacEfron,492399548,zacefron.com,Zac Efron,15262040,1822
+daddy_yankee,36483808,youtu.be,Daddy Yankee,15224432,22985
+aguerosergiokun,139092348,sergioaguero.com,Sergio Kun Aguero,15067967,5127
+kobebryant,1059194370,kobebryant.com,Kobe Bryant,14987909,1906
+RyanSeacrest,16190898,ryanseacrest.com,Ryan Seacrest,14980836,18652
+mangeshkarlata,155151279,en.wikipedia.org,Lata Mangeshkar,14942414,3528
+Benzema,1964571728,carbu.link,Karim Benzema,14921640,3179
+camerondallas,405728790,m.youtube.com,Cameron Dallas,14856732,1479
+gusttavo_lima,126676337,gusttavolima.com.br,Gusttavo Lima,14775409,20872
+rickygervais,20015311,rickygervais.com,Ricky Gervais,14774243,70105
+RealHughJackman,27042513,,Hugh Jackman,14767942,4146
+neiltyson,19725644,haydenplanetarium.org,Neil deGrasse Tyson,14635922,7707
+ClaudiaLeitte,48332360,claudialeitte.com,Claudia Leitte,14580269,59518
+felipeneto,14128609,youtube.com,Felipe Neto,14550030,15693
+ParineetiChopra,33801019,,Parineeti Chopra,14501748,8837
+annecurtissmith,23563916,anne.ph,Anne Curtis-Smith,14396835,53494
+vicegandako,186712788,,jose marie viceral,14391053,24261
+ShraddhaKapoor,317034396,,Shraddha Kapoor,14323785,5720
+BigSean,17915334,uknowbigsean.com,Big Sean,14252575,21152
+maroon5,24886570,maroon5.com,Maroon 5,14240910,7391
+Alwaleed_Talal,1244602586,alwaleed.com.sa,الوليد بن طلال,14240722,433
+JColeNC,19028953,dreamvillain.net,J. Cole,14219202,2865
+nickjonas,56783491,nickjonas.com,Nick Jonas,14214626,6244
+jk_rowling,62513246,jkrowling.com,J.K. Rowling,13999909,14714
+D_DeGea,265982289,degea1.com,David De Gea,13850807,2563
+marcosmion,36152770,,snap - mionoficial,13848675,28163
+johnlegend,18228898,johnlegend.com,John Legend,13841146,16156
+SethMacFarlane,18948541,,Seth MacFarlane,13758580,331
+TreySongz,24966423,smarturl.it,Trey Songz,13747262,14709
+JohnCena,141664648,,John Cena,13684151,7165
+LucianoHuck,43023158,globo.com,Luciano Huck,13262926,12427
+sonamakapoor,51376979,,Sonam Kapoor,13256435,20444
+salman_alodah,78010944,youtube.com,سلمان العودة,13018624,46980
+143redangel,61507091,angellocsin.com.ph,Angel Locsin,12735874,12300
+rogerfederer,1337785291,rogerfederer.com,Roger Federer,12727147,2185
+richardbranson,8161232,virgin.com,Richard Branson,12684554,26169
+FarOutAkhtar,97865628,excelmovies.com,Farhan Akhtar,12672222,9338
+chetan_bhagat,44588485,chetanbhagat.com,Chetan Bhagat,12616681,16546
+5SOS,264107729,,5 Seconds of Summer,12588852,28651
+50cent,18222378,smarturl.it,50cent,12543633,17544
+stephenfry,15439395,stephenfry.com,Stephen Fry,12480862,25596
+ashleytisdale,18091904,thehautemess.com,AshleyTisdaleFrench,12353401,11000
+MarceloM12,932429090,,Marcelo Vieira,12345749,1989
+thekiranbedi,68977380,kiranbedi.com,Kiran Bedi,12307303,37690
+Carles5puyol,136007061,carles5puyol.com,Carles Puyol,12280670,2487
+KrisJenner,23613479,krisjenner.com,Kris Jenner,12277689,14100
+SarahKSilverman,30364057,youtube.com,Sarah Silverman,12257128,19783
+iamwill,49573859,will.i.am,will.i.am,12049866,8873
+Usher,40908929,chains.tidal.com,Usher Raymond IV,12000005,6189
+LunaMaya26,128841198,itslunamaya.com,luna maya,11943877,15870
+CalvinHarris,18625669,,Calvin Harris,11911307,148
+jimmykimmel,26053643,youtube.com,Jimmy Kimmel,11907785,7862
+LittleMix,380399508,little-mix.com,Little Mix,11896737,34934
+victoriabeckham,185314895,victoriabeckham.com,Victoria Beckham,11878971,4024
+luansantana,59156773,luansantana.com.br,Luan Santana,11744528,14626
+MustafaHosny,60576219,mustafahosny.com,Mustafa Hosny,11735163,49549
+Trevornoah,46335511,trevornoah.com,Trevor Noah,11719477,11537
+ciara,28897926,smarturl.it,Ciara,11677455,12083
+XabiAlonso,183387449,,Xabi Alonso,11671266,600
+kendricklamar,23561980,txdxe.com,Kendrick Lamar,11670183,4227
+mindykaling,23544596,bit.ly,Mindy Kaling,11619685,20721
+amrdiab,46247180,amrdiab.net,Amr Diab,11554240,3130
+juanes,47288005,juanes.net,JUANES,11523768,12860
+Tatawerneck,62557485,,Tata werneck,11516867,24607
+EugenioDerbez,46527223,eugenioderbez.tv,Eugenio Derbez,11450660,10434
+Ludacris,17696167,ludaversal.com,Ludacris,11412236,22300
+rafinhabastos,18297088,rafinhabastos.com.br,Rafinha Bastos,11398906,35920
+rioferdy5,155927976,5mag.co,Rio Ferdinand,11371859,21993
+MarcAnthony,254274083,marcanthonyonline.com,Marc Anthony,11327261,7512
+Riteishd,57998991,,Riteish Deshmukh ,11265705,28617
+amrkhaled,66959303,AmrKhaled.net,Amr Khaled,11177532,18265
+MeekMill,20567939,smarturl.it,Meek Mill,11144134,16840
+rustyrockets,19562228,russellbrand.com,Russell Brand,11125622,16685
+billmaher,19697415,billmaher.com,Bill Maher,10987501,5135
+JKCorden,215952307,,Jkcorden,10959623,13911
+SimonCowell,413487212,,Simon Cowell,10932809,1880
+RNTata2000,277434037,,Ratan N. Tata,10900113,176
+serenawilliams,26589987,serenawilliams.com,Serena Williams,10710026,14651
+Pharrell,338084918,smarturl.it,Pharrell Williams,10659074,4738
+maddow,16129920,rachel.msnbc.com,Rachel Maddow MSNBC,10650294,19511
+JBALVIN,44670915,jbalvinelnegocio.com,J BALVIN,10643449,31729
+bernardokath,197807757,,KATH,10493296,6621

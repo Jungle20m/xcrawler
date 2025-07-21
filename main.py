@@ -1,9 +1,5 @@
-from src.crawler import Crawler, APICrawler
-
+from src.crawler import APICrawler
       
 if __name__ == '__main__':
-    # crawler = Crawler()
-    # crawler.run()
-    
     crawler = APICrawler(num_workers=1)
     crawler.run()
