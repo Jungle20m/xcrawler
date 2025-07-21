@@ -1,10 +1,12 @@
-from uuid import UUID
-from typing import TypedDict, List
+from typing import TypedDict, List, Optional, Dict
 from pymongo import MongoClient
-from pymongo.collection import Collection
-from bson import Binary
-import uuid
+from datetime import datetime
 
+
+class Media(TypedDict):
+    type: str
+    media_url_https: str
+    video_info: Optional[Dict]
 
 class Post(TypedDict):
     post_id: str
@@ -21,6 +23,8 @@ class Post(TypedDict):
     is_retweet: bool
     is_quote: bool
     author_site_id: str
+    created_at: datetime
+    media: List[Media]
     
     
 class Author(TypedDict):

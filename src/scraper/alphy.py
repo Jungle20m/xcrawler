@@ -1,14 +1,16 @@
 import time
-import json
-from typing import List, Optional
+from typing import List, Optional, Dict
+from datetime import datetime
+from dataclasses import dataclass
 
 import requests
 import jmespath
+from dateutil import parser
+from dateutil.tz import tzutc
 from playwright.sync_api import sync_playwright
-from playwright.async_api import async_playwright
 
 from src.db import Post
-from src.exception import ErrorHeaderNotFound
+from src.exception import ErrorHeaderNotFound, ErrorDataNotFound, ErrorTooManyRequest
 
 
 TWEET_EXPRESSION = """
@@ -42,15 +44,42 @@ data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].ent
             id: legacy.retweeted_status_result.result.core.user_results.result.rest_id,
             userName: legacy.retweeted_status_result.result.core.user_results.result.core.screen_name,
             name: legacy.retweeted_status_result.result.core.user_results.result.core.name
-        } 
+        },
+        media: legacy.retweeted_status_result.result.legacy.entities.media[] | [].{
+            type: type,
+            media_url_https: media_url_https,
+            video_info: type == 'video' && {
+                aspect_ratio: video_info.aspect_ratio,
+                duration_millis: video_info.duration_millis,
+                variants: video_info.variants
+            } || null
+        }
     } || null,
     author: {
         id: core.user_results.result.rest_id,
         userName: core.user_results.result.core.screen_name,
         name: core.user_results.result.core.name
-    } 
+    },
+    media: legacy.entities.media[] | [].{
+        type: type,
+        media_url_https: media_url_https,
+        video_info: type == 'video' && {
+            aspect_ratio: video_info.aspect_ratio,
+            duration_millis: video_info.duration_millis,
+            variants: video_info.variants
+        } || null
+    }
 }
-""" 
+"""
+
+def parse_time(time_str: Optional[str]) -> Optional[datetime]:
+    if not time_str:
+        return None
+    try:
+        dt = parser.parse(time_str)
+        return dt.astimezone(tzutc())
+    except ValueError:
+        return None
 
 def dicts_to_posts(items: List[dict]) -> List[Post]:
     posts: List[Post] = []
@@ -72,7 +101,9 @@ def dicts_to_posts(items: List[dict]) -> List[Post]:
             "ref_post_id": ref_post_id,
             "is_retweet": item.get("isRetweet", False),
             "is_quote": None,
-            "author_site_id": item.get("author", {}).get("id")
+            "author_site_id": item.get("author", {}).get("id"),
+            "created_at": parse_time(item.get("createdAt")),
+            "media": item.get("media")
         }
         posts.append(post)
         
@@ -93,7 +124,9 @@ def dicts_to_posts(items: List[dict]) -> List[Post]:
                 "ref_post_id": retweet.get("quoteId"),
                 "is_retweet": False,  # Bài retweet không được coi là retweet
                 "is_quote": None,
-                "author_site_id": retweet.get("author", {}).get("id")
+                "author_site_id": retweet.get("author", {}).get("id"),
+                "created_at": parse_time(retweet.get("createdAt")),
+                "media": retweet.get("media")
             }
             posts.append(retweet_post)
     
@@ -269,12 +302,31 @@ def get_user_by_screen_name(screen_name: str) -> str:
         return None
 
 
+@dataclass
+class Profile:
+    user_agent: Optional[str] = None
+    proxy: Optional[Dict] = None
+    
+
+class ProfileSelector:
+    def __init__(self, profiles: List[Profile]):
+        self.profiles = profiles
+        self.current_index = -1
+        self.total_profiles = len(profiles)
+
+    def get_profile(self) -> Profile:
+        self.current_index = (self.current_index + 1) % self.total_profiles
+        current_profile = self.profiles[self.current_index]
+        return current_profile
+    
+    def get_profile_index(self) -> int:
+        return self.current_index
     
 
 class AlphyExtractor:
-    def __init__(self, user_agent: Optional[str] = None, proxy: Optional[dict] = None):
-        self.user_agent = user_agent
-        self.proxy = proxy
+    def __init__(self, profile: Profile):
+        self.user_agent = profile.user_agent
+        self.proxy = profile.proxy
         self.headers = self._get_headers()
     
     
@@ -320,9 +372,9 @@ class AlphyExtractor:
                 raise e
     
     
-    def refresh(self, user_agent: Optional[str] = None, proxy: Optional[dict] = None):
-        self.user_agent = user_agent
-        self.proxy = proxy
+    def refresh(self, profile: Profile):
+        self.user_agent = profile.user_agent
+        self.proxy = profile.proxy
         self.headers = self._get_headers()
     
         
@@ -331,10 +383,15 @@ class AlphyExtractor:
             url = f"https://api.x.com/graphql/4cddsYq56gFfTNDAljwNOw/UserTweets?variables=%7B%22userId%22%3A%22{user_id}%22%2C%22count%22%3A20%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22payments_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Afalse%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22responsive_web_grok_show_grok_translated_post%22%3Afalse%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D"
             payload = {}
             response = requests.get(url, headers=self.headers, data=payload)
-            response.raise_for_status()
-            
+            response.raise_for_status()               
             data = jmespath.search(TWEET_EXPRESSION, response.json())
+            if data is None:
+                raise ErrorDataNotFound
             return data
+        except requests.exceptions.HTTPError as e:
+            if response.status_code == 429:
+                raise ErrorTooManyRequest
+            raise
         except Exception as e:
-            raise e
+            raise
         
