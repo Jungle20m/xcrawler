@@ -63,7 +63,7 @@ class APICrawler:
             try:
                 data = extractor.scrape(user_id=user["id"])
                 posts = alphy.dicts_to_posts(data)
-                self.db.insert_posts(posts)
+                self.db.upsert_posts(posts)
                 
                 logger.info(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - user: {user["name"]}: success")
             except ErrorTooManyRequest as e:
