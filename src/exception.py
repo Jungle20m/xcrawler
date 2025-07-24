@@ -14,3 +14,8 @@ class ErrorTooManyRequest(Exception):
     def __init__(self, message="too many request"):
         self.message = message
         super().__init__(self.message)
+        
+class ErrorForbidden(Exception):
+    def __init__(self, message="forbidden"):
+        self.message = message
+        super().__init__(self.message)

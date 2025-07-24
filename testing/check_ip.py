@@ -1,5 +1,6 @@
-import requests
 import json
+
+import requests
 
 def get_public_ip_with_proxy():
     # Cấu hình proxy (nếu có)

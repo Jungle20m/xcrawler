@@ -1,7 +1,8 @@
-from typing import TypedDict, List, Optional, Dict
+from datetime import datetime
+from typing import Dict, List, Optional, TypedDict
+
 from pymongo import MongoClient
 from pymongo.operations import ReplaceOne, UpdateOne
-from datetime import datetime
 
 
 class Media(TypedDict):

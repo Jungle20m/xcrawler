@@ -1,5 +1,6 @@
 from datetime import datetime
-from src.db import DB, Post, Media  # Giả sử class DB được lưu trong file db.py
+
+from src.db import DB, Media, Post  # Giả sử class DB được lưu trong file db.py
 
 def run_test():
     # Kết nối tới database test
