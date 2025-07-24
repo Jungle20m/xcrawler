@@ -1,54 +1,41 @@
+import json
 import time
 import threading
 
-from src.scraper.apify import ApiFy
-from src.scraper import alphy
-from src.scraper.alphy import AlphyExtractor, Profile, ProfileSelector
-from src.db import DB, Post, Author
 from src.logger import Logger
-from src.exception import ErrorTooManyRequest
+from src.scraper import alphy
+from src.db import DB, Post, Author
+from src.scraper.apify import ApiFy
+from src.exception import ErrorForbidden, ErrorTooManyRequest
+from src.scraper.alphy import AlphyExtractor, Profile, ProfileSelector
 
-    
     
 logger = Logger() 
 
-
-
-              
-                    
+          
 class APICrawler:
-    def __init__(self, num_workers: int):
+    def __init__(self, num_workers: int, profiles_per_thread: int = None):
         self.num_workers = num_workers
-        self.db = DB(connection_string="mongodb://admin:password@192.168.1.143:27017/")
+        self.profiles_per_thread = profiles_per_thread
+        self.db = DB(connection_string="mongodb://admin:password@192.168.102.5:27017/")
         
-    def _scrape(self, thread_id):
-        profiles_data = [
-            {
-                "user_agent": None,
-                "proxy": None
-            },
-            {
-                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-                "proxy": {"server": "http://38.154.227.167:5868", "username": "zrgsinee", "password": "3lgguwj49847"}
-            },
-            {
-                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
-                "proxy": {"server": "http://107.172.163.27:6543", "username": "zrgsinee", "password": "3lgguwj49847"}
-            },
-            {
-                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
-                "proxy": {"server": "http://23.95.150.145:6114", "username": "zrgsinee", "password": "3lgguwj49847"}
-            },
-            {
-                "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
-                "proxy": {"server": "http://198.23.239.134:6540", "username": "zrgsinee", "password": "3lgguwj49847"}
-            }
-        ]
-        profiles = [Profile(user_agent=p["user_agent"], proxy=p["proxy"]) for p in profiles_data]
-        profile_selector = ProfileSelector(profiles)
+        # Load profiles from file
+        with open("data/profiles.json", 'r', encoding='utf-8') as file:
+            profiles_data = json.load(file)
+        
+        self.profile_pool = [Profile(user_agent=p["user_agent"], proxy=p["proxy"]) for p in profiles_data]
+        
+        # Validate if we have enough profiles
+        total_profiles_needed = self.num_workers * (self.profiles_per_thread or 1)
+        if self.profiles_per_thread and total_profiles_needed > len(self.profile_pool):
+            raise ValueError(f"Not enough profiles! Need {total_profiles_needed}, but only have {len(self.profile_pool)}")
+        
+    def _scrape(self, thread_id, assigned_profiles):
+        profile_selector = ProfileSelector(assigned_profiles)
                 
         users = []
-        with open("data/users/users_1000.txt", 'r', encoding='utf-8') as file:
+        user_file = f"data/users/{thread_id}.txt"
+        with open(user_file, 'r', encoding='utf-8') as file:
             for line in file:
                 parts = line.strip().split(',')
                 if len(parts) >= 2:
@@ -70,17 +57,52 @@ class APICrawler:
                 logger.error(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - user: {user["name"]}: {e}")
                 logger.info(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - update new profile")
                 extractor.refresh(profile=profile_selector.get_profile())
+            except ErrorForbidden as e:
+                logger.error(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - user: {user["name"]}: {e}")
+                logger.info(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - update new profile")
+                extractor.refresh(profile=profile_selector.get_profile())
             except Exception as e:
                 logger.error(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - user: {user["name"]}: {e}")
             finally:
                 time.sleep(2)
         
     def run(self):
-        threads = []
-        for thread_id in range(self.num_workers):
-            thread = threading.Thread(target=self._scrape, args=(thread_id,), daemon=True)
-            thread.start()
-            threads.append(thread)
+        # Divide profiles among threads
+        if self.profiles_per_thread:
+            # Use specified profiles per thread
+            threads = []
+            start_idx = 0
+            
+            for thread_id in range(self.num_workers):
+                end_idx = start_idx + self.profiles_per_thread
+                assigned_profiles = self.profile_pool[start_idx:end_idx]
+                
+                thread = threading.Thread(target=self._scrape, args=(thread_id, assigned_profiles), daemon=True)
+                thread.start()
+                threads.append(thread)
+                
+                start_idx = end_idx
+        else:
+            # Auto-distribute all profiles evenly
+            profiles_per_thread = len(self.profile_pool) // self.num_workers
+            remaining_profiles = len(self.profile_pool) % self.num_workers
+            
+            threads = []
+            start_idx = 0
+            
+            for thread_id in range(self.num_workers):
+                # Calculate number of profiles for this thread
+                thread_profile_count = profiles_per_thread + (1 if thread_id < remaining_profiles else 0)
+                end_idx = start_idx + thread_profile_count
+                
+                # Assign profiles to this thread
+                assigned_profiles = self.profile_pool[start_idx:end_idx]
+                
+                thread = threading.Thread(target=self._scrape, args=(thread_id, assigned_profiles), daemon=True)
+                thread.start()
+                threads.append(thread)
+                
+                start_idx = end_idx
         
         for thread in threads:
             thread.join()

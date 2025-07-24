@@ -1,0 +1,906 @@
+[
+    {
+        "user_agent": null,
+        "proxy": null
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "130.180.231.39",
+            "port": "8181",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "46.203.137.62",
+            "port": "6059",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.203.21.195",
+            "port": "7182",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.29.123.90",
+            "port": "7355",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.56.161.192",
+            "port": "9068",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "46.202.34.103",
+            "port": "7869",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.23.88.249",
+            "port": "8005",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.21.38.14",
+            "port": "7275",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.196.61.63",
+            "port": "6101",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "82.21.62.124",
+            "port": "7888",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "198.145.103.238",
+            "port": "6495",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "45.56.177.146",
+            "port": "8947",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "156.237.19.221",
+            "port": "5618",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "193.160.80.100",
+            "port": "6368",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.203.47.23",
+            "port": "5522",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.29.143.102",
+            "port": "7816",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "46.203.137.113",
+            "port": "6110",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.56.161.141",
+            "port": "9017",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.203.91.57",
+            "port": "5555",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "193.160.80.228",
+            "port": "6496",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "156.237.33.108",
+            "port": "5512",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "82.23.96.153",
+            "port": "7379",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.203.161.109",
+            "port": "5606",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.21.49.23",
+            "port": "7286",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "46.203.137.25",
+            "port": "6022",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "192.46.203.232",
+            "port": "6198",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.22.96.229",
+            "port": "7937",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "156.238.176.209",
+            "port": "6891",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.56.179.232",
+            "port": "9436",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "154.194.16.23",
+            "port": "5942",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "45.56.183.91",
+            "port": "8413",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "45.196.32.2",
+            "port": "5634",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "154.217.199.163",
+            "port": "5458",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "156.237.31.113",
+            "port": "5508",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.21.55.252",
+            "port": "7516",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "150.241.111.64",
+            "port": "6568",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "46.203.161.177",
+            "port": "5674",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.56.161.191",
+            "port": "9067",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "130.180.228.59",
+            "port": "6343",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "216.98.255.22",
+            "port": "6644",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "46.203.80.77",
+            "port": "6075",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "63.141.62.103",
+            "port": "6396",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "159.148.239.14",
+            "port": "6566",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.24.35.123",
+            "port": "7846",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "154.194.26.111",
+            "port": "6352",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "194.113.80.30",
+            "port": "6313",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "150.241.117.162",
+            "port": "5666",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "192.46.189.176",
+            "port": "6169",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "130.180.233.45",
+            "port": "7616",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "154.194.16.239",
+            "port": "6158",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "72.46.139.187",
+            "port": "6747",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "45.196.63.199",
+            "port": "6833",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "72.1.154.34",
+            "port": "7925",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "192.46.188.167",
+            "port": "5826",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "72.1.153.92",
+            "port": "5484",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "154.194.24.42",
+            "port": "5652",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "193.160.80.35",
+            "port": "6303",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.196.43.102",
+            "port": "5829",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.26.114.4",
+            "port": "6706",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.21.35.175",
+            "port": "7935",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "136.0.167.134",
+            "port": "7137",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.196.52.168",
+            "port": "6183",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "216.98.254.51",
+            "port": "6361",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "216.98.230.241",
+            "port": "6694",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.196.54.216",
+            "port": "6795",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.196.50.52",
+            "port": "6374",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.21.44.40",
+            "port": "7802",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "156.237.37.126",
+            "port": "5528",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.39.157.27",
+            "port": "9059",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "154.217.223.121",
+            "port": "5415",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.21.15.116",
+            "port": "6876",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "192.46.185.108",
+            "port": "5798",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "156.237.23.7",
+            "port": "5408",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "46.203.80.174",
+            "port": "6172",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.203.184.238",
+            "port": "7505",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "216.170.122.109",
+            "port": "6147",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "192.46.203.137",
+            "port": "6103",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "103.210.12.17",
+            "port": "5945",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "192.46.185.100",
+            "port": "5790",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "192.46.203.148",
+            "port": "6114",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "130.180.228.171",
+            "port": "6455",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.196.54.27",
+            "port": "6606",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "45.56.179.192",
+            "port": "9396",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.24.27.253",
+            "port": "8225",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "216.98.255.216",
+            "port": "6838",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "45.56.179.104",
+            "port": "9308",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "82.29.143.163",
+            "port": "7877",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "45.196.33.177",
+            "port": "6158",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "45.248.55.77",
+            "port": "6663",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "154.217.191.21",
+            "port": "5314",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "46.202.34.96",
+            "port": "7862",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "82.29.123.179",
+            "port": "7444",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "156.237.37.223",
+            "port": "5625",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "154.217.199.157",
+            "port": "5452",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "147.79.5.185",
+            "port": "7898",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "46.202.34.199",
+            "port": "7965",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
+        "proxy": {
+            "host": "179.61.172.175",
+            "port": "6726",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:124.0) Gecko/20100101 Firefox/124.0",
+        "proxy": {
+            "host": "82.21.55.223",
+            "port": "7487",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81",
+        "proxy": {
+            "host": "154.194.26.147",
+            "port": "6388",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    },
+    {
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 OPR/109.0.0.0",
+        "proxy": {
+            "host": "154.194.26.35",
+            "port": "6276",
+            "username": "attexkci",
+            "password": "dafnfma5fdj9"
+        }
+    }
+]
