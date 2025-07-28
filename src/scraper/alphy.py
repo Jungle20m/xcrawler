@@ -1,7 +1,7 @@
 import time
-from dataclasses import dataclass
+from typing import List, Optional, Dict
 from datetime import datetime
-from typing import Dict, List, Optional
+from dataclasses import dataclass
 
 import requests
 import jmespath
@@ -10,11 +10,8 @@ from dateutil.tz import tzutc
 from playwright.sync_api import sync_playwright
 
 from src.db import Post
-from src.logger import Logger
-from src.exception import ErrorDataNotFound, ErrorForbidden, ErrorHeaderNotFound, ErrorTooManyRequest
+from src.exception import ErrorHeaderNotFound, ErrorDataNotFound, ErrorTooManyRequest
 
-
-logger = Logger()
 
 TWEET_EXPRESSION = """
 data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].entries[].content.itemContent.tweet_results.result.{
@@ -246,13 +243,13 @@ def get_user_tweets_without_auth(user_id: str, user_name: str, cookies: str):
         data = jmespath.search(TWEET_EXPRESSION, response.json())
         return data  # Trả về đối tượng JSON
     except requests.exceptions.HTTPError as http_err:
-        logger.error(f"HTTP error occurred: {http_err}")
+        print(f"HTTP error occurred: {http_err}")
         return None
     except requests.exceptions.JSONDecodeError as json_err:
-        logger.error(f"JSON decode error occurred: {json_err}")
+        print(f"JSON decode error occurred: {json_err}")
         return None
     except requests.exceptions.RequestException as req_err:
-        logger.error(f"Request error occurred: {req_err}")
+        print(f"Request error occurred: {req_err}")
         return None
     
 
@@ -338,6 +335,7 @@ class AlphyExtractor:
         
         def intercept_request(request):
             if request.resource_type == "xhr":
+                print(request.url)
                 _xhr_calls.append(request)
             return request
 
@@ -352,16 +350,8 @@ class AlphyExtractor:
         
         with sync_playwright() as pw:
             try: 
-                url = "https://x.com/"       
-                if self.proxy != None:
-                    proxy = {
-                        "server": f"http://{self.proxy['host']}:{self.proxy['port']}",
-                        "username": self.proxy["username"],
-                        "password": self.proxy["password"]
-                    }
-                else:
-                    proxy = None
-                browser = pw.chromium.launch(proxy=proxy, headless=False)
+                url = "https://x.com/"              
+                browser = pw.chromium.launch(proxy=self.proxy, headless=False)
                 context = browser.new_context(viewport={"width": 1920, "height": 1080}, user_agent=self.user_agent)
                 page = context.new_page()
 
@@ -392,14 +382,7 @@ class AlphyExtractor:
         try:
             url = f"https://api.x.com/graphql/4cddsYq56gFfTNDAljwNOw/UserTweets?variables=%7B%22userId%22%3A%22{user_id}%22%2C%22count%22%3A20%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22payments_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Afalse%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22responsive_web_grok_show_grok_translated_post%22%3Afalse%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D"
             payload = {}
-            if self.proxy != None:
-                proxy = {
-                    "http": f"http://{self.proxy['username']}:{self.proxy['password']}@{self.proxy['host']}:{self.proxy['port']}",
-                    "https": f"http://{self.proxy['username']}:{self.proxy['password']}@{self.proxy['host']}:{self.proxy['port']}"
-                }
-            else:
-                proxy = None
-            response = requests.get(url, headers=self.headers, data=payload, proxies=proxy)
+            response = requests.get(url, headers=self.headers, data=payload)
             response.raise_for_status()               
             data = jmespath.search(TWEET_EXPRESSION, response.json())
             if data is None:
@@ -408,8 +391,6 @@ class AlphyExtractor:
         except requests.exceptions.HTTPError as e:
             if response.status_code == 429:
                 raise ErrorTooManyRequest
-            if response.status_code == 403:
-                raise ErrorForbidden
             raise
         except Exception as e:
             raise
