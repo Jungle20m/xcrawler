@@ -2,6 +2,8 @@ import json
 import time
 import threading
 
+from kafka import KafkaProducer
+
 from src.logger import Logger
 from src.scraper import alphy
 from src.db import DB, Post, Author
@@ -18,6 +20,10 @@ class APICrawler:
         self.num_workers = num_workers
         self.profiles_per_thread = profiles_per_thread
         self.db = DB(connection_string="mongodb://admin:password@192.168.102.5:27017/")
+        self.producer = KafkaProducer(
+            bootstrap_servers='192.168.102.5:19092',
+            value_serializer=lambda x: json.dumps(x).encode('utf-8')
+        )
         
         # Load profiles from file
         with open("data/profiles.json", 'r', encoding='utf-8') as file:
@@ -51,6 +57,10 @@ class APICrawler:
                 data = extractor.scrape(user_id=user["id"])
                 posts = alphy.dicts_to_posts(data)
                 self.db.upsert_posts(posts)
+                
+                # TODO: to reduce the size of the data, we should compress the data before sending to kafka
+                # consider using lz4, zstd, gzip, etc.
+                # self.producer.send('twetter_posts', value=data)
                 
                 logger.info(f"[thread {thread_id}] - profile: {profile_selector.get_profile_index()} - user: {user["name"]}: success")
             except ErrorTooManyRequest as e:
@@ -107,5 +117,7 @@ class APICrawler:
         for thread in threads:
             thread.join()
             
+        self.producer.flush()
+        self.producer.close()
         logger.info("All the threads are terminated!!!")
             
