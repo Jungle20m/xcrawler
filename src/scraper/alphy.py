@@ -303,20 +303,26 @@ def get_user_by_screen_name(screen_name: str) -> str:
 
 
 @dataclass
-class Profile:
+class BrowserProfile:
     user_agent: Optional[str] = None
     proxy: Optional[Dict] = None
     
+@dataclass
+class UserProfile:
+    email: str
+    password: str
+    screen_name: str
+    
 
-class ProfileSelector:
-    def __init__(self, profiles: List[Profile]):
-        self.profiles = profiles
+class BrowserProfileSelector:
+    def __init__(self, browser_profiles: List[BrowserProfile]):
+        self.browser_profiles = browser_profiles
         self.current_index = -1
-        self.total_profiles = len(profiles)
+        self.total_profiles = len(browser_profiles)
 
-    def get_profile(self) -> Profile:
+    def get_profile(self) -> BrowserProfile:
         self.current_index = (self.current_index + 1) % self.total_profiles
-        current_profile = self.profiles[self.current_index]
+        current_profile = self.browser_profiles[self.current_index]
         return current_profile
     
     def get_profile_index(self) -> int:
@@ -324,10 +330,10 @@ class ProfileSelector:
     
 
 class AlphyExtractor:
-    def __init__(self, profile: Profile):
-        self.user_agent = profile.user_agent
-        self.proxy = profile.proxy
-        self.headers = self._get_headers()
+    def __init__(self, browser_profile: BrowserProfile):
+        self.user_agent = browser_profile.user_agent
+        self.proxy = browser_profile.proxy
+        # self.headers = self._get_headers()
     
     
     def _get_headers(self) -> dict:
@@ -372,13 +378,13 @@ class AlphyExtractor:
                 raise e
     
     
-    def refresh(self, profile: Profile):
-        self.user_agent = profile.user_agent
-        self.proxy = profile.proxy
+    def refresh(self, browser_profile: BrowserProfile):
+        self.user_agent = browser_profile.user_agent
+        self.proxy = browser_profile.proxy
         self.headers = self._get_headers()
     
         
-    def scrape(self, user_id: str):
+    def scrape_posts_by_user_id(self, user_id: str):
         try:
             url = f"https://api.x.com/graphql/4cddsYq56gFfTNDAljwNOw/UserTweets?variables=%7B%22userId%22%3A%22{user_id}%22%2C%22count%22%3A20%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22payments_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Afalse%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22responsive_web_grok_show_grok_translated_post%22%3Afalse%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D"
             payload = {}
@@ -395,3 +401,90 @@ class AlphyExtractor:
         except Exception as e:
             raise
         
+    def scrape_home_user(self, user_profile: UserProfile):
+        _xhr_calls = []
+
+        def intercept_response(response):
+            """capture all background requests and save them"""
+            # we can extract details from background requests
+            if response.request.resource_type == "xhr":
+                _xhr_calls.append(response)
+            return response
+        
+        def wait_for_user_tweets(page, timeout=30000):
+            """Wait until a UserTweets request has a response"""
+            start_time = time.time()
+            while time.time() - start_time < timeout / 1000:
+                for xhr in _xhr_calls:
+                    print(xhr.url)
+                    if "HomeTimeline" in xhr.url: # check if the "UserTweets" is being called?
+                        return xhr
+                time.sleep(0.1)
+            raise TimeoutError("Timeout waiting for HomeTimeline response")
+        
+        with sync_playwright() as pw:
+            try: 
+                # Khởi chạy trình duyệt Chromium ở chế độ có giao diện (headless=False)
+                browser = pw.chromium.launch(headless=False)
+                # Tạo context mới với kích thước viewport
+                context = browser.new_context(viewport={"width": 1920, "height": 1080})
+                # Tạo trang mới
+                page = context.new_page()
+
+                # Điều hướng đến trang x.com
+                page.goto("https://x.com/i/flow/login", timeout=60000)
+                
+                
+                print("======= Đang điều hướng đến trang login")
+                
+                page.wait_for_selector('input[name="text"]', timeout=10000)
+                page.fill('input[name="text"]', user_profile.email)
+                
+                time.sleep(3)
+                
+                page.wait_for_selector('button:has-text("Next")', timeout=10000)
+                page.click('button:has-text("Next")')
+                
+                time.sleep(3)
+                
+                page.wait_for_selector('input[name="text"]', timeout=10000)
+                page.fill('input[name="text"]', user_profile.screen_name)
+                
+                time.sleep(3)
+                
+                page.wait_for_selector('button:has-text("Next")', timeout=10000)
+                page.click('button:has-text("Next")')
+                
+                time.sleep(3)
+                
+                page.wait_for_selector('input[name="password"]', timeout=10000)
+                page.fill('input[name="password"]', user_profile.password)
+
+                time.sleep(3)
+
+                
+                page.wait_for_selector('button:has-text("Log in")', timeout=10000)
+                page.click('button:has-text("Log in")')
+                
+                page.on("response", intercept_response) 
+                page.wait_for_selector("[data-testid='tweet']")
+
+                # Đợi 5 giây
+                time.sleep(10)
+                
+                # go to url and wait for the page to load
+                # page.wait_for_selector("[data-testid='tweet']")
+
+                response = wait_for_user_tweets(page, timeout=30000)
+                print(response.json())
+
+
+                # Đóng trình duyệt
+                browser.close()
+            except Exception as e:
+                print(e)
+                
+               
+# nnhvietanh@gmail.com 
+# @kevinninh200496
+# @Vietanh96
