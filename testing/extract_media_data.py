@@ -2,14 +2,14 @@ import json
 
 import jmespath
 
-from src.scraper.alphy import dicts_to_posts
-
+from src.common import dicts_to_posts
+from src.db import DB
 
 
 TWEET_EXPRESSION = """
-data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].entries[].content.itemContent.tweet_results.result.{
+data.home.home_timeline_urt.instructions[?type=='TimelineAddEntries'].entries[].content.itemContent.tweet_results.result.{
     id: legacy.id_str,
-    url: join('', ['https://x.com/', core.user_results.result.core.screen_name, '/status/', rest_id]),
+    url: core.user_results.result.core.screen_name != null && join('', ['https://x.com/', core.user_results.result.core.screen_name, '/status/', rest_id]),
     text: legacy.full_text,
     retweetCount: legacy.retweet_count,
     replyCount: legacy.reply_count,
@@ -22,7 +22,7 @@ data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].ent
     isRetweet: legacy.retweeted_status_result != null
     retweet: legacy.retweeted_status_result.result != null && {
         id: legacy.retweeted_status_result.result.legacy.id_str,
-        url: join('', ['https://x.com/', legacy.retweeted_status_result.result.core.user_results.result.core.screen_name, '/status/', legacy.retweeted_status_result.result.rest_id]),
+        url: legacy.retweeted_status_result.result.core.user_results.result.core.screen_name != null && join('', ['https://x.com/', legacy.retweeted_status_result.result.core.user_results.result.core.screen_name, '/status/', legacy.retweeted_status_result.result.rest_id]),
         text: legacy.retweeted_status_result.result.legacy.full_text,
         retweetCount: legacy.retweeted_status_result.result.legacy.retweet_count,
         replyCount: legacy.retweeted_status_result.result.legacy.reply_count,
@@ -67,12 +67,13 @@ data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].ent
 
 
 def run():
-    
-    with open("data/content/content_with_video.json", 'r') as file:
+    with open("data/content/home.json", 'r') as file:
         data = json.load(file)
+        
+    # print(data)
+    
+    db = DB(connection_string="mongodb://admin:password@192.168.102.5:27017/")
 
     result = jmespath.search(TWEET_EXPRESSION, data)
     posts = dicts_to_posts(result)
-    
-    for post in posts[:3]:
-        print(post)
+    db.upsert_posts(posts)
