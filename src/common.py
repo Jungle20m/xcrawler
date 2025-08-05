@@ -5,6 +5,7 @@ from dateutil import parser
 from dateutil.tz import tzutc
 
 from src.db import Post
+from src.domain.browser import BrowserDomain
 
 
 def parse_time(time_str: Optional[str]) -> Optional[datetime]:
@@ -67,3 +68,18 @@ def dicts_to_posts(items: List[dict]) -> List[Post]:
             posts.append(retweet_post)
     
     return posts
+
+
+class BrowserSelector:
+    def __init__(self, browsers: List[BrowserDomain]):
+        self.browsers = browsers
+        self.current_index = -1
+        self.total_browsers = len(browsers)
+
+    def get_browser(self) -> BrowserDomain:
+        self.current_index = (self.current_index + 1) % self.total_browsers
+        current_browser = self.browsers[self.current_index]
+        return current_browser
+    
+    def get_browser_index(self) -> int:
+        return self.current_index

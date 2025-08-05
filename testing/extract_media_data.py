@@ -67,13 +67,16 @@ data.home.home_timeline_urt.instructions[?type=='TimelineAddEntries'].entries[].
 
 
 def run():
-    with open("data/content/home.json", 'r') as file:
+    with open("data/content/home_1.json", 'r') as file:
         data = json.load(file)
         
     # print(data)
     
-    db = DB(connection_string="mongodb://admin:password@192.168.102.5:27017/")
+    # db = DB(connection_string="mongodb://admin:password@192.168.102.5:27017/")
 
     result = jmespath.search(TWEET_EXPRESSION, data)
-    posts = dicts_to_posts(result)
-    db.upsert_posts(posts)
+    for post in result:
+        print(post)
+        
+    # posts = dicts_to_posts(result)
+    # db.upsert_posts(posts)

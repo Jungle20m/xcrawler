@@ -1,8 +1,13 @@
+import os
+import json
 from datetime import datetime
 from typing import Dict, List, Optional, TypedDict
 
 from pymongo import MongoClient
 from pymongo.operations import ReplaceOne, UpdateOne
+
+from src.domain.browser import BrowserDomain
+from src.domain.user import UserDomain
 
 
 class Media(TypedDict):
@@ -44,18 +49,24 @@ class DB:
         self.author_collection = self.db["authors"]
         self.post_collection = self.db["posts"]
 
-    def insert_post(self, post: Post) -> None:
-        self.post_collection.insert_one(post)
-
-    def insert_posts(self, posts: List[Post]) -> None:
-        self.post_collection.insert_many(posts)
-        
+    '''
+    Author interface
+    '''
     def insert_author(self, author: Author) -> None:
         self.author_collection.insert_one(author)
         
     def get_authors(self) -> List[Author]:
         return list(self.author_collection.find())
     
+    '''
+    Post interface
+    '''
+    def insert_post(self, post: Post) -> None:
+        self.post_collection.insert_one(post)
+
+    def insert_posts(self, posts: List[Post]) -> None:
+        self.post_collection.insert_many(posts)
+        
     def upsert_posts(self, posts: List[Post]) -> None:
         operations = [
             UpdateOne(
@@ -86,3 +97,61 @@ class DB:
             ) for post in posts
         ]
         self.post_collection.bulk_write(operations, ordered=False)
+
+    '''
+    Browser interface
+    '''
+    def get_browser_by_id(self, id: Optional[str] = None) -> Optional[BrowserDomain]:
+        browser_file_path = f"data/user_profiles/{id}/browser_config.json"
+        with open(browser_file_path, "r") as file:
+            browser = json.load(file)
+            if browser is None or browser == {}:
+                return None
+            
+            return BrowserDomain(
+                user_agent=browser["user_agent"],
+                proxy=browser["proxy"]
+            )
+    
+    '''
+    User interface
+    '''
+    def get_user_by_id(self, id: Optional[str] = None) -> Optional[UserDomain]:
+        user_file_path = f"data/user_profiles/{id}/credential.json"
+        with open(user_file_path, "r") as file:
+            user = json.load(file)
+            if user is None or user == {}:
+                return None
+            
+            return UserDomain(
+                id=user["id"],
+                email=user["email"],
+                password=user["password"],
+                screen_name=user["screen_name"],
+                is_logged_in=user["is_logged_in"],
+                browser_id=user["browser_id"],
+                cookie=user["cookie"],
+                cookie_file=user["cookie_file"],
+            )
+            
+    def get_logged_in_users(self) -> List[UserDomain]:
+        user_folder_path = "data/user_profiles"
+        user_files = os.listdir(user_folder_path)
+        users = []
+        for user_file in user_files:
+            user_file_path = f"{user_folder_path}/{user_file}/credential.json"
+            with open(user_file_path, "r") as file:
+                user = json.load(file)
+                if user is None or user == {}:
+                    continue
+                
+                users.append(UserDomain(
+                    id=user["id"],
+                    email=user["email"],
+                    password=user["password"],
+                    screen_name=user["screen_name"],
+                    is_logged_in=user["is_logged_in"],
+                    browser_id=user["browser_id"],
+                    cookie=user["cookie"],
+                    cookie_file=user["cookie_file"]))
+        return users
