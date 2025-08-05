@@ -1,9 +1,4 @@
 {
     "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36",
-    "proxy": {
-        "host": "130.180.231.39",
-        "port": "8181",
-        "username": "attexkci",
-        "password": "dafnfma5fdj9"
-    } 
+    "proxy": null
 }

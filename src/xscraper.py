@@ -1,4 +1,5 @@
 import time
+import json
 from typing import List, Optional, Dict
 from datetime import datetime
 from dataclasses import dataclass
@@ -11,8 +12,9 @@ from playwright.sync_api import sync_playwright, StorageState
 
 from src.db import Post
 from src.exception import ErrorHeaderNotFound, ErrorDataNotFound, ErrorTooManyRequest
-from src.profile import BrowserConfig, UserProfile
 from src.logger import Logger
+from src.domain.browser import BrowserDomain
+from src.domain.user import UserDomain
 
 USER_TWEET_EXPRESSION = """
 data.user.result.timeline.timeline.instructions[?type=='TimelineAddEntries'].entries[].content.itemContent.tweet_results.result.{
@@ -135,26 +137,24 @@ data.home.home_timeline_urt.instructions[?type=='TimelineAddEntries'].entries[].
 
 logger = Logger()
 
-state_file = "data/state.json"
-
 class TwitterScraper:
     def __init__(self):
         pass
-    
-    def __get_from_browser_config(self, config: BrowserConfig) -> (str, dict):
-        if config is None:
-            return None, None
-
-        if config.proxy is None:
-            return config.user_agent, None
         
-        return config.user_agent, {
-            "server": f"{config.proxy['host']}:{config.proxy['port']}",
-            "username": config.proxy['username'],
-            "password": config.proxy['password']
+    def __get_from_browser(self, browser: BrowserDomain) -> (str, dict):
+        if browser is None:
+            return None, None
+        
+        if browser.proxy is None:
+            return browser.user_agent, None
+
+        return browser.user_agent, {
+            "server": f"{browser.proxy['host']}:{browser.proxy['port']}",
+            "username": browser.proxy['username'],
+            "password": browser.proxy['password']
         }
     
-    def get_headers(self, config: BrowserConfig) -> dict:
+    def get_headers(self, browser: BrowserDomain) -> dict:
         _xhr_calls = []
         
         def intercept_request(request):
@@ -175,12 +175,17 @@ class TwitterScraper:
         with sync_playwright() as pw:
             try: 
                 url = "https://x.com/"              
-                browser = pw.chromium.launch(proxy=config.proxy, headless=False)
-                context = browser.new_context(viewport={"width": 1920, "height": 1080}, user_agent=config.user_agent)
+                chrome = pw.chromium.launch(headless=False)
+                user_agent, proxy = self.__get_from_browser(browser)
+                context = chrome.new_context(
+                    viewport={"width": 1920, "height": 1080}, 
+                    user_agent=user_agent,
+                    proxy=proxy
+                )
                 page = context.new_page()
 
                 page.on("request", intercept_request)
-                page.goto(url)
+                page.goto(url, timeout=60000)
             
                 cookies = context.cookies()
                 cookie_string = "; ".join([f"{cookie['name']}={cookie['value']}" for cookie in cookies])
@@ -195,7 +200,7 @@ class TwitterScraper:
             except Exception as e:
                 raise e
     
-    def scrape_posts_by_user_id(self, user_id: str, config: BrowserConfig, headers: Dict):
+    def scrape_posts_by_user_id(self, user_id: str, browser: BrowserDomain, headers: Dict):
         try:
             url = f"https://api.x.com/graphql/4cddsYq56gFfTNDAljwNOw/UserTweets?variables=%7B%22userId%22%3A%22{user_id}%22%2C%22count%22%3A20%2C%22includePromotedContent%22%3Atrue%2C%22withQuickPromoteEligibilityTweetFields%22%3Atrue%2C%22withVoice%22%3Atrue%7D&features=%7B%22rweb_video_screen_enabled%22%3Afalse%2C%22payments_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22rweb_tipjar_consumption_enabled%22%3Atrue%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22premium_content_api_read_enabled%22%3Afalse%2C%22communities_web_enable_tweet_community_results_fetch%22%3Atrue%2C%22c9s_tweet_anatomy_moderator_badge_enabled%22%3Atrue%2C%22responsive_web_grok_analyze_button_fetch_trends_enabled%22%3Afalse%2C%22responsive_web_grok_analyze_post_followups_enabled%22%3Afalse%2C%22responsive_web_jetfuel_frame%22%3Atrue%2C%22responsive_web_grok_share_attachment_enabled%22%3Atrue%2C%22articles_preview_enabled%22%3Atrue%2C%22responsive_web_edit_tweet_api_enabled%22%3Atrue%2C%22graphql_is_translatable_rweb_tweet_is_translatable_enabled%22%3Atrue%2C%22view_counts_everywhere_api_enabled%22%3Atrue%2C%22longform_notetweets_consumption_enabled%22%3Atrue%2C%22responsive_web_twitter_article_tweet_consumption_enabled%22%3Atrue%2C%22tweet_awards_web_tipping_enabled%22%3Afalse%2C%22responsive_web_grok_show_grok_translated_post%22%3Afalse%2C%22responsive_web_grok_analysis_button_from_backend%22%3Atrue%2C%22creator_subscriptions_quote_tweet_preview_enabled%22%3Afalse%2C%22freedom_of_speech_not_reach_fetch_enabled%22%3Atrue%2C%22standardized_nudges_misinfo%22%3Atrue%2C%22tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled%22%3Atrue%2C%22longform_notetweets_rich_text_read_enabled%22%3Atrue%2C%22longform_notetweets_inline_media_enabled%22%3Atrue%2C%22responsive_web_grok_image_annotation_enabled%22%3Atrue%2C%22responsive_web_grok_community_note_auto_translation_is_enabled%22%3Afalse%2C%22responsive_web_enhance_cards_enabled%22%3Afalse%7D&fieldToggles=%7B%22withArticlePlainText%22%3Afalse%7D"
             payload = {}
@@ -212,12 +217,12 @@ class TwitterScraper:
         except Exception as e:
             raise
     
-    def login(self, user_profile: UserProfile, config: Optional[BrowserConfig] = None):
+    def login(self, user: UserDomain, browser: Optional[BrowserDomain] = None):
         with sync_playwright() as pw:
             try: 
-                browser = pw.chromium.launch(headless=False)
-                user_agent, proxy = self.__get_from_browser_config(config)
-                context = browser.new_context(
+                chrome = pw.chromium.launch(headless=False)
+                user_agent, proxy = self.__get_from_browser(browser=browser)
+                context = chrome.new_context(
                     viewport={"width": 1920, "height": 1080},
                     user_agent=user_agent,
                     proxy=proxy
@@ -225,42 +230,16 @@ class TwitterScraper:
                 page = context.new_page()
 
                 page.goto("https://x.com/i/flow/login", timeout=120000)
-                
-                # # login
-                # page.wait_for_selector('input[name="text"]', timeout=10000)
-                # page.fill('input[name="text"]', user_profile.email)
-                # time.sleep(3)
-                
-                # page.wait_for_selector('button:has-text("Next")', timeout=10000)
-                # page.click('button:has-text("Next")')
-                # time.sleep(3)
-                
-                # page.wait_for_selector('input[name="text"]', timeout=10000)
-                # page.fill('input[name="text"]', user_profile.screen_name)
-                # time.sleep(3)
-                
-                # page.wait_for_selector('button:has-text("Next")', timeout=10000)
-                # page.click('button:has-text("Next")')
-                # time.sleep(3)
-                
-                # page.wait_for_selector('input[name="password"]', timeout=10000)
-                # page.fill('input[name="password"]', user_profile.password)
-                # time.sleep(3)
-
-                # page.wait_for_selector('button:has-text("Log in")', timeout=10000)
-                # page.click('button:has-text("Log in")')
-                
-                print("You have 2 minutes to login")
-                
+                                
                 time.sleep(120)
                 
-                return context.storage_state(path=state_file)
+                return context.storage_state(path=user.cookie_file)
             except Exception as e:
                 raise Exception(f"Error logging in: {e}")
             finally:
-                browser.close()
+                chrome.close()
         
-    def scrape_posts_from_home(self,state_file: str, config: Optional[BrowserConfig] = None):
+    def scrape_posts_from_home(self, state_file: str, browser: Optional[BrowserDomain] = None):
         _xhr_calls = []
 
         def intercept_response(response):
@@ -283,9 +262,9 @@ class TwitterScraper:
         
         with sync_playwright() as pw:
             try: 
-                browser = pw.chromium.launch(headless=False)
-                user_agent, proxy = self.__get_from_browser_config(config)
-                context = browser.new_context(
+                chrome = pw.chromium.launch(headless=False)
+                user_agent, proxy = self.__get_from_browser(browser=browser)
+                context = chrome.new_context(
                     viewport={"width": 1920, "height": 1080}, 
                     storage_state=state_file,
                     user_agent=user_agent,
@@ -301,9 +280,6 @@ class TwitterScraper:
                 page.wait_for_selector("[data-testid='tweet']")
                 
                 response = wait_for_user_tweets(page, timeout=30000)
-                logger.info(f"Response: {response.json()}")
-                logger.info(f"Response type: {type(response)}")
-                
                 data = jmespath.search(HOME_TWEET_EXPRESSION, response.json())
                 if data is None:
                     raise ErrorDataNotFound
@@ -311,4 +287,4 @@ class TwitterScraper:
             except Exception as e:
                 print(e)
             finally:
-                browser.close()
+                chrome.close()
